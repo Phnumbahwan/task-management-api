@@ -5,12 +5,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserModule } from './user/user.module';
 import { User } from './user/user.entity';
+import { SeederService } from './seeder/seeder/seeder.service';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    TypeOrmModule.forFeature([User]),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => ({
@@ -27,5 +29,6 @@ import { User } from './user/user.entity';
     }),
     UserModule,
   ],
+  providers: [SeederService],
 })
 export class AppModule { }
