@@ -16,6 +16,7 @@ export class SeederService implements OnModuleInit {
             await this.userRepo.save([
                 { first_name: 'Admin', last_name: 'User', email: 'admin@example.com' },
                 { first_name: 'Guest', last_name: 'User', email: 'guest@example.com' },
+                { first_name: 'Gil', last_name: 'Pacturan', email: 'gpacturan@example.com' },
             ]);
         }
     }

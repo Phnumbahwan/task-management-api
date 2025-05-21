@@ -17,4 +17,12 @@ export class UserService {
             console.log(error)
         }
     }
+
+    create(data: { first_name: string, last_name: string, email: string }) {
+        try {
+            return this.userRepo.save(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
