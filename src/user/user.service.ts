@@ -25,4 +25,13 @@ export class UserService {
             console.log(error)
         }
     }
+
+    async updateUser(id: number, updatedUser: { first_name: string; last_name: string; email: string }) {
+        const existingUser = await this.userRepo.findOneBy({ id });
+        if (!existingUser) {
+            throw new Error('User not found');
+        }
+        Object.assign(existingUser, updatedUser);
+        return this.userRepo.save(existingUser);
+    }
 }
